@@ -127,7 +127,8 @@ ENV PATH=/home/app/unms/node_modules/.bin:$PATH:/usr/lib/postgresql/9.6/bin \
   PUBLIC_WS_PORT=8443 \
   UNMS_NETFLOW_PORT=2055 \
   SECURE_LINK_SECRET=enigma \
-  SSL_CERT=/ssl
+  SSL_CERT=/ssl \
+  TZ=Europe/Stockholm
 
 EXPOSE 80 8443 2055/udp
 
