@@ -15,7 +15,8 @@ docker run \
   -p 2055:2055/udp \
   -e TZ=<timezone> \
   -v </path/to/config>:/config \
-  oznu/unms:latest
+  -v </path/to/ssl>:/ssl \
+  aiwi/docker-unms:latest
 ```
 
 ## Raspberry Pi / ARMv7
@@ -23,7 +24,7 @@ docker run \
 This image will also allow you to run [UNMS](https://unms.com/) on a Raspberry Pi or other Docker-enabled ARMv7/8 devices by using the `armhf` tag.
 
 ```
-docker run -d --name unms -p 80:80 -p 8443:8443 -p 2055:2055/udp -v </path/to/config>:/config oznu/unms:armhf
+docker run -d --name unms -p 80:80 -p 8443:8443 -p 2055:2055/udp -v </path/to/config>:/config aiwi/docker-unms:armhf
 ```
 
 ## Parameters
@@ -32,7 +33,7 @@ The parameters are split into two halves, separated by a colon, the left hand si
 
 * `-v </path/to/config>:/config` - The persistent data location, the database, certs and logs will be stored here
 * `-p 80:80` - Expose the HTTP web server port on the docker host
-* `-p 443:443` - Expose the HTTPS and WSS web server port on the docker host
+* `-p 8443:8443` - Expose the HTTPS and WSS web server port on the docker host
 * `-p 2055:2055/udp` - Expose the Netflow port on the docker host
 * `-e TZ` - for [timezone information](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) e.g. `-e TZ=Europe/London`
 
@@ -56,14 +57,14 @@ The Docker image, oznu/unms, is not maintained by or affiliated with Ubiquiti Ne
 version: '2'
 services:
   unms:
-    image: oznu/unms:latest  # use "armhf" instead of "latest" for arm devices
+    image: aiwi/docker-unms:latest  # use "armhf" instead of "latest" for arm devices
     restart: always
     ports:
       - 80:80
-      - 443:443
+      - 8443:8443
       - 2055:2055/udp
     environment:
-      - TZ=Australia/Sydney
+      - TZ=Europe/Stockholm
     volumes:
       - ./volumes/unms:/config
 ```
