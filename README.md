@@ -40,8 +40,8 @@ The parameters are split into two halves, separated by a colon, the left hand si
 *Optional Settings:*
 
 * `-e DEMO=false` - Enable UNMS demo mode
-* `-e PUBLIC_HTTPS_PORT=443` - This should match the HTTPS port your are exposing to on the docker host
-* `-e PUBLIC_WS_PORT=443` - This should match the HTTPS port your are exposing to on the docker host
+* `-e PUBLIC_HTTPS_PORT=8443` - This should match the HTTPS port your are exposing to on the docker host
+* `-e PUBLIC_WS_PORT=8443` - This should match the HTTPS port your are exposing to on the docker host
 * `-e SECURE_LINK_SECRET=` - Random key for secure link module. Set this to something random.
 
 ## Limitations
